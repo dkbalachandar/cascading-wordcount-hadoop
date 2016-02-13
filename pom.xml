@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.cascading</groupId>
-    <artifactId>cascadingWc</artifactId>
+    <artifactId>cascading-wordcount</artifactId>
     <version>1.0</version>
 
     <repositories>
@@ -56,11 +56,11 @@
             <artifactId>cascading-core</artifactId>
             <version>3.0.2</version>
         </dependency>
-        <!-- <dependency>
+         <dependency>
              <groupId>cascading</groupId>
              <artifactId>cascading-local</artifactId>
              <version>3.0.2</version>
-         </dependency>-->
+         </dependency>
         <dependency>
             <groupId>cascading</groupId>
             <artifactId>cascading-hadoop</artifactId>

@@ -21,6 +21,7 @@ public class CascadingHdfsWordCounter {
 
     public static void main(String[] args) {
 
+        System.out.println("Job is started");
         //input and output path
         String inputPath = args[0];
         String outputPath = args[1];
@@ -29,7 +30,7 @@ public class CascadingHdfsWordCounter {
         Tap srctap = new Hfs(new TextLine(new Fields("line")), inputPath);
         Tap sinkTap = new Hfs(new TextLine(new Fields("word", "count")), outputPath, SinkMode.REPLACE);
 
-        Pipe words = new Each("start", new RegexSplitGenerator("\\s+"));
+        Pipe words = new Each("token", new RegexSplitGenerator("\\s+"));
         Pipe group = new GroupBy(words);
         Count count = new Count();
         Pipe wcount = new Every(group, count);
@@ -39,5 +40,6 @@ public class CascadingHdfsWordCounter {
         HadoopFlowConnector flowConnector = new HadoopFlowConnector();
         Flow flow = flowConnector.connect("cascading wordcount job", srctap, sinkTap, wcount);
         flow.complete();
+        System.out.println("Job is completed");
     }
 }
