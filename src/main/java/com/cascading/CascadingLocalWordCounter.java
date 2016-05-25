@@ -21,12 +21,9 @@ public class CascadingLocalWordCounter {
 
     public static void main(String[] args) {
 
-        System.out.println("Job is started");
         //input and output path
         String inputPath = args[0];
         String outputPath = args[1];
-        System.out.println("inputPath::" + inputPath);
-        System.out.println("outputPath::" + outputPath);
         Tap srctap = new FileTap(new TextLine(new Fields("line")), inputPath);
         Tap sinkTap = new FileTap(new TextLine(new Fields("word", "count")), outputPath, SinkMode.REPLACE);
 
@@ -38,6 +35,5 @@ public class CascadingLocalWordCounter {
         LocalFlowConnector flowConnector = new LocalFlowConnector();
         Flow flow = flowConnector.connect("cascading wordcount job", srctap, sinkTap, wcount);
         flow.complete();
-        System.out.println("Job is done");
     }
 }

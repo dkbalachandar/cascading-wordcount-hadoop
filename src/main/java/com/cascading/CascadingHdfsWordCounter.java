@@ -21,7 +21,6 @@ public class CascadingHdfsWordCounter {
 
     public static void main(String[] args) {
 
-        System.out.println("Job is started");
         //input and output path
         String inputPath = args[0];
         String outputPath = args[1];
@@ -40,6 +39,5 @@ public class CascadingHdfsWordCounter {
         HadoopFlowConnector flowConnector = new HadoopFlowConnector();
         Flow flow = flowConnector.connect("cascading wordcount job", srctap, sinkTap, wcount);
         flow.complete();
-        System.out.println("Job is completed");
     }
 }
